@@ -59,6 +59,10 @@
   }
   input[type=radio], input[type=checkbox] { width: auto !important; display: inline-block !important; }
   select { width: 100% !important; max-width: 100% !important; padding: 6px !important; font-size: 16px !important; }
+  /* Cargo select: opções compactadas em mobile (Android/iOS respeitam parcialmente) */
+  #cargo { font-size: 14px !important; }
+  #cargo option, #cargo optgroup { font-size: 12px !important; line-height: 1.15 !important; padding: 4px 6px !important; }
+  #cargo optgroup { font-weight: 700 !important; }
   /* Data de Nascimento: dia/mês/ano em uma linha só */
   fieldset td.date-triple { display: flex !important; flex-wrap: nowrap !important; gap: 6px !important; align-items: center !important; }
   fieldset td.date-triple #ins_nascimento_dia,
