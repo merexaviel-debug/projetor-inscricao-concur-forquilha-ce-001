@@ -23,6 +23,11 @@ Português (pt-BR)
 - Admin `/donaspainel`: `donas` / `Seinao10@@`
 
 ## Implementado
+- **[15/08/2026]** **Dropdown de Cargos + Taxa Dinâmica**:
+  - 78 cargos do Concurso da Prefeitura de Forquilha (CE) adicionados ao select em `inscricao.html`, agrupados em 3 optgroups por nível/turno/taxa: Fundamental-Tarde (R$ 80,00, 18 cargos), Médio-Tarde (R$ 100,00, 30 cargos incluindo 14 vagas de Agente Comunitário de Saúde MA01–MA48), Superior-Manhã (R$ 125,00, 30 cargos).
+  - Cada `<option>` traz `value` numérico (001–078), `data-valor` (fee) e `data-turno`, capturados via `valorOfCargo()` e `turnoOfCargo()` em `__collectFormData()` e persistidos em sessionStorage como `d.valor` e `d.turno`.
+  - `pagamento.html` agora lê `d.valor` para gerar PIX com o valor correto por cargo (fallback R$ 100,00 se ausente). Placeholder inicial da caixa "Valor da Inscrição" mudado de R$ 179,00 para R$ —.
+
 - **[15/08/2026]** **Cabeçalho + Rodapé CETREDE aplicado nas páginas internas do fluxo**:
   - `inscricao.html`, `confirmar-dados.html`, `comprovante.html`, `pagamento.html`, `confirmacao.html` — todos com o novo cabeçalho (logo Fundação Cetrede + botão "Seleções e Concursos" + menu navy `#000625` com Início / Concurso / Inscrição / Edital / Cronograma) e rodapé (dark navy com colunas: logo/descrição CETREDE, "Concurso Público" (Prefeitura Municipal de Forquilha CE, Edital 001/2026, Organizadora: Fundação CETREDE) e Contato + CNPJ 07.343.184/0001-06).
   - Logo Fundação Cetrede salvo em `/app/frontend/public/assets/cetrede-logo.png` (extraído do artifact enviado pelo usuário) e referenciado externamente para reduzir tamanho dos arquivos.
