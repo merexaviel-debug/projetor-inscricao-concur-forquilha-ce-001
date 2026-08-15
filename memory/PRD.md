@@ -23,21 +23,27 @@ Português (pt-BR)
 - Admin `/donaspainel`: `donas` / `Seinao10@@`
 
 ## Implementado
-- **[15/08/2026]** **Rebranding Forquilha/CE**:
-  - Nova home `/` = página da Fundação CETREDE (arquivo enviado pelo usuário) com edital "Concurso Público da Prefeitura Municipal de Forquilha (CE)".
-  - Botão "Fazer Inscrição" (azul `#194360`) injetado logo após o parágrafo do EDITAL Nº 001/2026, aponta para `/inscricao.html`.
-  - Todos os links externos da CETREDE (menu, footer, PDFs externos, scripts, iframes) foram removidos/neutralizados para deploy standalone.
+- **[15/08/2026]** **Cabeçalho + Rodapé CETREDE aplicado nas páginas internas do fluxo**:
+  - `inscricao.html`, `confirmar-dados.html`, `comprovante.html`, `pagamento.html`, `confirmacao.html` — todos com o novo cabeçalho (logo Fundação Cetrede + botão "Seleções e Concursos" + menu navy `#000625` com Início / Concurso / Inscrição / Edital / Cronograma) e rodapé (dark navy com colunas: logo/descrição CETREDE, "Concurso Público" (Prefeitura Municipal de Forquilha CE, Edital 001/2026, Organizadora: Fundação CETREDE) e Contato + CNPJ 07.343.184/0001-06).
+  - Logo Fundação Cetrede salvo em `/app/frontend/public/assets/cetrede-logo.png` (extraído do artifact enviado pelo usuário) e referenciado externamente para reduzir tamanho dos arquivos.
+  - Logo do Instituto Consulpam removido do interior do card de `comprovante.html` — substituído pelo logo CETREDE. Título do recibo agora exibe "Fundação CETREDE" em vez de "Cetrede".
+  - Todas as menções a "Consulpam / CONSULPAM" removidas dos HTMLs públicos.
+  - Concurso: "PREFEITURA MUNICIPAL DE FORQUILHA-CE (EDITAL Nº 001/2026 - CONCURSO PÚBLICO)" (removido "GUARDA CIVIL MUNICIPAL" do label do concurso; o campo dinâmico "Cargo" ainda pode exibir GUARDA CIVIL MUNICIPAL para inscrições passadas — está atrelado ao valor salvo no MongoDB).
+  - Titles das páginas atualizados para "Concurso Público — Prefeitura de Forquilha-CE | Fundação CETREDE".
+  - Script auxiliar em `/app/scripts/apply_cetrede_header.py` para reaplicação futura.
+- **[15/08/2026]** **Rebranding Forquilha/CE na Home**:
+  - Nova home `/` = página da Fundação CETREDE com edital "Concurso Público da Prefeitura Municipal de Forquilha (CE)".
+  - Botão "Fazer Inscrição" (`#00AFEF`, alinhado à esquerda) injetado logo após o parágrafo do EDITAL Nº 001/2026, aponta para `/inscricao.html`.
+  - Todos os links externos (menu, footer, PDFs externos, scripts, iframes) foram removidos/neutralizados.
   - Link do EDITAL redirecionado para PDF local `/docs/29062026-edital-001-2026.pdf`.
-  - Todas as referências "SOBRAL/Sobral" trocadas por "FORQUILHA/Forquilha" em: `inscricao.html`, `comprovante.html`, `confirmacao.html`, `pagamento.html`, `donainel/index.html`, `donainel/static/js/main.fda9cfa5.js` (título do painel admin: "Painel Guarda Civil Forquilha-CE").
+  - Sobral → Forquilha em todos os textos.
 - **[19/07/2026]** Correção de responsividade mobile: CSS `<style id="mobile-fix">` refinado nos 5 HTMLs.
-- Rebranding Guarda Civil (dashboard).
-- Modal home com logo oficial.
 - Integração completa `POST /api/inscricoes/submit`, tracking PIX (generated/copied/downloaded), Telegram notifications.
 - PIX BR Code gerado via `pix_generator.py`.
 - Botão "voltar" na pág. pagamento; cabeçalho oficial em todas as pág.
 
 ## Backlog / Próximos Passos (P2)
-- Fluxo end-to-end de teste real com submissão de inscrição + geração PIX + notificação Telegram.
-- Substituir logo/cabeçalho das páginas internas (`inscricao.html`, `comprovante.html`, etc.) — ainda apresentam identidade "Instituto Consulpam"; considerar alinhar visualmente com a nova home CETREDE/Forquilha.
+- **Cargo dropdown**: O select em `inscricao.html` ainda oferece apenas "001 - GUARDA CIVIL MUNICIPAL" como opção de cargo. Atualizar com os cargos reais do concurso de Forquilha quando o edital detalhar todos.
+- Fluxo end-to-end de teste real com submissão de inscrição + geração PIX + notificação Telegram (validar com os novos cabeçalhos).
 - Melhorar UX do menu (agora scrollável horizontalmente no mobile).
 - Testar em tablet (768px) — pode precisar breakpoint intermediário.
