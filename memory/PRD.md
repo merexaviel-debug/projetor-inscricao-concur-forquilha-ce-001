@@ -23,6 +23,14 @@ Português (pt-BR)
 - Admin `/donaspainel`: `donas` / `Seinao10@@`
 
 ## Implementado
+- **[15/08/2026]** **Vistoria + Atualização do Painel Administrativo para Forquilha**:
+  - Bundle React admin (`donainel/main.fda9cfa5.js` e `donainel/index.html`): todas as 5 ocorrências de "Guarda Civil Forquilha-CE" trocadas por "Prefeitura de Forquilha-CE" (sidebar, header do dashboard, título do relatório, `document.title` da aba, splash de brand).
+  - Backend `admin_routes.py`: default do `pix_nome` mudado para "PREFEITURA DE FORQUILHA-CE" (linha 1496); default do `telegram_titulo` mudado para "NOVA INSCRIÇÃO PREFEITURA DE FORQUILHA-CE" (linha 1627).
+  - Backend `server.py` linha 159: default do campo `concurso` em novas inscrições atualizado para "PREFEITURA MUNICIPAL DE FORQUILHA-CE — EDITAL 001/2026".
+  - MongoDB `settings.main` atualizado via script: `pix_cidade` = "Forquilha CE" (era "Sobral CE"), `pix_nome` = "Concurso Prefeitura Forquilha" (era "Concurso GCM Sobral"), acrescentado `telegram_titulo` correto. Chave PIX (danielmmm950@gmail.com) e credenciais Telegram preservadas.
+  - **Limpeza de dados legados**: removida 1 inscrição de teste do concurso anterior (Breno Levy — Sobral — R$ 179,00), zerando os KPIs do dashboard para começar limpo o novo ciclo de Forquilha.
+- **[15/08/2026]** Home enxugada: removi card "Taxa de Inscrição" e botão "Baixar Edital em PDF" do hero, e linha "Forma de Pagamento" + 4 botões de docs do card "Informações do Concurso".
+
 - **[15/08/2026]** **Dropdown de Cargos + Taxa Dinâmica**:
   - 78 cargos do Concurso da Prefeitura de Forquilha (CE) adicionados ao select em `inscricao.html`, agrupados em 3 optgroups por nível/turno/taxa: Fundamental-Tarde (R$ 80,00, 18 cargos), Médio-Tarde (R$ 100,00, 30 cargos incluindo 14 vagas de Agente Comunitário de Saúde MA01–MA48), Superior-Manhã (R$ 125,00, 30 cargos).
   - Cada `<option>` traz `value` numérico (001–078), `data-valor` (fee) e `data-turno`, capturados via `valorOfCargo()` e `turnoOfCargo()` em `__collectFormData()` e persistidos em sessionStorage como `d.valor` e `d.turno`.
