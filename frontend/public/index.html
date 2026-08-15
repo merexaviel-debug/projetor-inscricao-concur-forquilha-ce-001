@@ -82,8 +82,19 @@ a{color:var(--azure);text-decoration:none}
   .details .row{grid-template-columns:1fr;gap:2px;padding:12px 0;}
   #cetrede-header .top{padding:14px 16px;}
   #cetrede-header .top img{height:46px;}
-  #cetrede-header nav ul{gap:14px;padding:10px 16px;overflow-x:auto;flex-wrap:nowrap;}
+  #cetrede-header nav ul{gap:14px;padding:10px 16px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}
   #cetrede-header nav a{font-size:13px;white-space:nowrap;}
+  #cetrede-header .btn-top{font-size:12px;padding:10px 16px;}
+}
+@media (max-width:420px){
+  #cetrede-header .top{padding:12px 14px;gap:10px;}
+  #cetrede-header .top img{height:40px;}
+  #cetrede-header .btn-top{font-size:11px;padding:9px 12px;letter-spacing:.3px;}
+  #cetrede-header nav ul{padding:8px 14px;gap:12px;}
+  #cetrede-header nav a{font-size:13px;letter-spacing:.2px;}
+  .hero h1{font-size:24px;}
+  .hero .subtitle{font-size:14px;}
+  .info-card .value strong{font-size:17px;}
 }
 </style>
 </head>

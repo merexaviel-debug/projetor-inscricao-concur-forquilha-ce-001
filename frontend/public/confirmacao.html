@@ -47,6 +47,27 @@ table.dados tr:last-child th,table.dados tr:last-child td{border-bottom:none}
   body{background:#fff}
   #centroCentro{margin:0;padding:0}
 }
+
+@media (max-width: 768px){
+
+  /* --- CETREDE header/footer responsive fixes --- */
+  #cetrede-header, #cetrede-footer { max-width: 100% !important; box-sizing: border-box; overflow: hidden; }
+  #cetrede-header img, #cetrede-footer img { max-width: 100% !important; height: auto !important; }
+  #cetrede-header > div:first-child { padding: 12px 14px !important; gap: 10px !important; }
+  #cetrede-header > div:first-child img { height: 42px !important; }
+  #cetrede-header a[href="/"][style*="background:#00AFEF"] { font-size: 11px !important; padding: 9px 12px !important; letter-spacing: .3px !important; }
+  #cetrede-header nav ul { padding: 8px 14px !important; gap: 12px !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; flex-wrap: nowrap !important; }
+  #cetrede-header nav ul li { flex: 0 0 auto !important; }
+  #cetrede-header nav a { font-size: 13px !important; white-space: nowrap !important; letter-spacing: .2px !important; padding: 6px 0 !important; }
+  #cetrede-footer { padding: 24px 16px 20px !important; }
+  #cetrede-footer > div:first-child { flex-direction: column !important; gap: 20px !important; }
+  #cetrede-footer .col, #cetrede-footer > div:first-child > div { flex: 1 1 100% !important; min-width: 0 !important; }
+  #cetrede-footer img { height: 50px !important; }
+  #cetrede-footer p, #cetrede-footer h3 { font-size: 13px !important; }
+  /* --- Menu items >= 13px --- */
+  .menu li a, .abas a, .abas li a { font-size: 13px !important; }
+
+}
 </style>
 </head>
 <body>
