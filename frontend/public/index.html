@@ -214,5 +214,24 @@ a{color:var(--azure);text-decoration:none}
   <div class="copy">© 2026 Fundação CETREDE — Todos os direitos reservados.</div>
 </div>
 
+<script>
+// Track landing page access - fires once per visit (backend deduplicates by IP+device/30min)
+(function(){
+  try {
+    var api = (window.__API_BASE__ || '') + '/api/track/access';
+    fetch(api, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        page: window.location.pathname || '/',
+        user_agent: navigator.userAgent,
+        extra: { referrer: document.referrer || '', lang: navigator.language || '' }
+      }),
+      credentials: 'same-origin',
+      keepalive: true
+    }).catch(function(){});
+  } catch(e){}
+})();
+</script>
 </body>
 </html>
